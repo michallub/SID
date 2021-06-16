@@ -77,13 +77,13 @@ std::array<const char*, 4> decodeWords4D(uint64_t dictsize, uint64_t abcd) noexc
 //encode 4 words on 56 bits as one of extraNum, compile time version
 constexpr sid::SID SIDDICT4C(const char* a, const char* b, const char* c, const char* d) noexcept
 {
-	return sid::packDict(encodeWords4C(sid::ip::dictInfo.maxValue, a,b,c,d));
+	return sid::packDict(encodeWords4C(sid::ip::dictInfo.cdpt, a,b,c,d));
 }
 
 //encode 4 words on 56 bits as one of extraNum, run time version
 sid::SID SIDDICT4D(const char* a, const char* b, const char* c, const char* d) noexcept
 {
-	return sid::packDict(encodeWords4D(sid::ip::dictInfo.maxValue, a,b,c,d));
+	return sid::packDict(encodeWords4D(sid::ip::dictInfo.cdpt, a,b,c,d));
 }
 
 //decode 4 words on 56 bits as one of extraNum, compile time version
@@ -91,7 +91,7 @@ constexpr std::array<const char*, 4> unpackWords4C(sid::SID s)
 {
 	auto upn = sid::unpackDict(s);
 	if(upn.type == (sid::PackType::dict))
-		return decodeWords4C(sid::ip::dictInfo.maxValue, upn.number);
+		return decodeWords4C(sid::ip::dictInfo.cdpt, upn.number);
 	else
 		return {nullptr, nullptr, nullptr, nullptr};
 }
@@ -102,7 +102,7 @@ std::array<const char*, 4> unpackWords4D(sid::SID s)
 	auto upn = sid::unpackDict(s);
 	//printf("%lld, %lld, %lld", upn.number, upn.type, (sid::PackType::extra_num|0x1) + extraNumIndex);
 	assert(upn.type == (sid::PackType::dict));
-	return decodeWords4D(sid::ip::dictInfo.maxValue, upn.number);
+	return decodeWords4D(sid::ip::dictInfo.cdpt, upn.number);
 }
 
 

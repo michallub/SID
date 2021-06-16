@@ -22,7 +22,8 @@ constexpr std::array<const char*, 4> exampleConstexprUnpacked=  unpackWords4C(ex
 const sid::SID exampleDynamic = SIDDICT4D("enemy", "tank", "01", "");
 const std::array<const char*, 4> exampleDynamicUnpacked=  unpackWords4D(exampleDynamic);
 	
-	
+	std::cout << sid::unshuffle(exampleConstexpr) << "\n";
+	std::cout << sid::unshuffle(exampleDynamic) << "\n";
 	
 	for(auto e: exampleConstexprUnpacked)
 		if(e)

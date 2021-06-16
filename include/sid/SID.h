@@ -100,9 +100,8 @@ namespace sid {
 	constexpr uint64_t prime64 = 2744922570705554189ull;
 	constexpr uint64_t invprime64 = 2356850971703802821ull;
 
-
 	// encode SID package for better hashing
-	inline constexpr uint64_t shuffle(uint64_t in) noexcept
+	inline constexpr uint64_t shuffleHelper(uint64_t in) noexcept
 	{
 		in = in * prime64;
 
@@ -111,13 +110,21 @@ namespace sid {
 #endif
 
 		return in;
+		
+	}
+
+	constexpr uint64_t nullsidpartialyshuffled = shuffleHelper(0);
+
+	// encode SID package for better hashing
+	inline constexpr uint64_t shuffle(uint64_t in) noexcept
+	{
+		return shuffleHelper(in) ^ nullsidpartialyshuffled;
 	}
 
 
 	// decode SID package from encrypted
-	inline constexpr uint64_t unshuffle(uint64_t in) noexcept
+	inline constexpr uint64_t unshuffleHelper(uint64_t in) noexcept
 	{
-
 #if ENCRYPT_SID!=0
 		in = DES::DES_Dec_Block(in, sidencryptsubkeys);
 #endif
@@ -126,6 +133,15 @@ namespace sid {
 
 		return in;
 	}
+
+	// decode SID package from encrypted
+	inline constexpr uint64_t unshuffle(uint64_t in) noexcept
+	{
+		return unshuffleHelper(in ^ nullsidpartialyshuffled);
+	}
+
+	
+
 
 	struct SID
 	{
@@ -375,7 +391,7 @@ namespace sid {
 			0,											// first code
 			0,											// last code
 			1,											// code point
-			1,											// max length
+			0,											// max length
 			{ 'N', 'U', 'L', 'L' },						// name
 			0											//max value
 		};
@@ -467,7 +483,12 @@ namespace sid {
 		char str[16];
 		PackType::PT type;
 	};
-
+	
+	constexpr SID packNull() noexcept
+	{
+		return { 0 };
+	}
+	
 	template <uint64_t FIRSTCODE, uint64_t MAX_VALUE>
 	constexpr SID packHashTempl(uint64_t hash) noexcept {
 		
@@ -700,6 +721,7 @@ namespace sid {
 
 		hsh = unshuffle(hsh);
 
+		if (unpackTempl<ip::nullInfo.frst, ip::nullInfo.last, ip::nullInfo.cdpt, ip::nullInfo.lngh>(hsh, text, "", ip::nullInfo.name)) return text;
 		if (unpackTempl<ip::alnumInfo.frst, ip::alnumInfo.last, ip::alnumInfo.cdpt, ip::alnumInfo.lngh>(hsh, text, lut38ToChar, ip::alnumInfo.name)) return text;
 		if (unpackTempl<ip::base64Info.frst, ip::base64Info.last, ip::base64Info.cdpt, ip::base64Info.lngh>(hsh, text, lut73ToChar, ip::base64Info.name)) return text;
 		if (unpackTempl<ip::asciiInfo.frst, ip::asciiInfo.last, ip::asciiInfo.cdpt, ip::asciiInfo.lngh>(hsh, text, lut128ToChar, ip::asciiInfo.name)) return text;
