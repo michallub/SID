@@ -160,10 +160,10 @@ namespace sid {
 	};
 
 
-	//LUT 37<->byte
-#ifndef SID_LUT37
-#define SID_LUT37
-	constexpr ::std::array<uint8_t, 256> getCharTo37() noexcept
+	//LUT 38<->byte
+#ifndef SID_LUT38
+#define SID_LUT38
+	constexpr ::std::array<uint8_t, 256> getCharTo38() noexcept
 	{
 		::std::array<uint8_t, 256> tab = {};
 		uint8_t code = 0;
@@ -175,13 +175,15 @@ namespace sid {
 		for (size_t i = 0; i <= 'z' - 'a'; i++)
 			tab[i + 'A'] = tab[i + 'a'] = code++;
 
+		tab['_'] = tab[' '] = tab['.'] = code++;
+		
 		return tab;
 	}
-	constexpr inline ::std::array<uint8_t, 256> lutCharTo37 = getCharTo37();
+	constexpr inline ::std::array<uint8_t, 256> lutCharTo38 = getCharTo38();
 
-	constexpr ::std::array<char, 37> get37ToChar() noexcept
+	constexpr ::std::array<char, 38> get38ToChar() noexcept
 	{
-		::std::array<char, 37> tab = {};
+		::std::array<char, 38> tab = {};
 		uint8_t code = 0;
 
 		tab[code++] = '\0';
@@ -191,11 +193,13 @@ namespace sid {
 
 		for (size_t i = 'A'; i <= 'Z'; i++)
 			tab[code++] = i;
+		
+		tab[code++] = '_';
 
 		return tab;
 	}
-	constexpr inline ::std::array<char, 37> lut37ToChar = get37ToChar();
-#endif // !SID_LUT37
+	constexpr inline ::std::array<char, 38> lut38ToChar = get38ToChar();
+#endif // !SID_LUT38
 
 	//LUT 73<->byte
 #ifndef SID_LUT73
@@ -262,40 +266,40 @@ namespace sid {
 	constexpr inline ::std::array<char, 73> lut73ToChar = get73ToChar();
 #endif // !SID_LUT73
 
-	//LUT 131<->byte
-#ifndef SID_LUT131
-#define SID_LUT131
-	constexpr ::std::array<uint8_t, 256> getCharTo131() noexcept
+	//LUT 128<->byte
+#ifndef SID_LUT128
+#define SID_LUT128
+	constexpr ::std::array<uint8_t, 256> getCharTo128() noexcept
 	{
 		::std::array<uint8_t, 256> tab = {};
 		uint8_t code = 0;
-
-		for (size_t i = 0; i < 131; i++)
+		
+		for (size_t i = 0; i < 128; i++)
 			tab[code++] = i;
 
 		return tab;
 	}
-	constexpr inline ::std::array<uint8_t, 256> lutCharTo131 = getCharTo131();
+	constexpr inline ::std::array<uint8_t, 256> lutCharTo128 = getCharTo128();
 
-	constexpr ::std::array<char, 131> get131ToChar() noexcept
+	constexpr ::std::array<char, 128> get128ToChar() noexcept
 	{
-		::std::array<char, 131> tab = {};
+		::std::array<char, 128> tab = {};
 		uint8_t code = 0;
-
-		for (size_t i = 0; i < 131; i++)
+		
+		for (size_t i = 0; i < 128; i++)
 			tab[code++] = i;
 
 		return tab;
 	}
-	constexpr inline ::std::array<char, 131> lut131ToChar = get131ToChar();
-#endif // !SID_LUT131
+	constexpr inline ::std::array<char, 128> lut128ToChar = get128ToChar();
+#endif // !SID_LUT128
 
-	//LUT 257<->byte
-#ifndef SID_LUT257
-#define SID_LUT257
-	constexpr ::std::array<uint16_t, 256> getCharTo257() noexcept
+	//LUT 256<->byte
+#ifndef SID_LUT256
+#define SID_LUT256
+	constexpr ::std::array<uint8_t, 256> getCharTo256() noexcept
 	{
-		::std::array<uint16_t, 256> tab = {};
+		::std::array<uint8_t, 256> tab = {};
 		uint16_t code = 0;
 
 		for (size_t i = 0; i < 256; i++)
@@ -303,11 +307,11 @@ namespace sid {
 
 		return tab;
 	}
-	constexpr inline ::std::array<uint16_t, 256> lutCharTo257 = getCharTo257();
+	constexpr inline ::std::array<uint8_t, 256> lutCharTo256 = getCharTo256();
 
-	constexpr ::std::array<char, 257> get257ToChar() noexcept
+	constexpr ::std::array<char, 256> get256ToChar() noexcept
 	{
-		::std::array<char, 257> tab = {};
+		::std::array<char, 256> tab = {};
 		uint8_t code = 0;
 
 		for (size_t i = 0; i < 256; i++)
@@ -315,251 +319,14 @@ namespace sid {
 
 		return tab;
 	}
-	constexpr inline ::std::array<char, 257> lut257ToChar = get257ToChar();
-#endif // !SID_LUT257
-
-	//LUT 2<->byte
-#ifndef SID_LUT2
-#define SID_LUT2
-	constexpr ::std::array<uint8_t, 256> getCharTo2() noexcept
-	{
-		::std::array<uint8_t, 256> tab = {};
-		uint8_t code = 0;
-		tab['0'] = code++;
-		tab['1'] = code++;
-		return tab;
-	}
-	constexpr inline ::std::array<uint8_t, 256> lutCharTo2 = getCharTo2();
-
-	constexpr ::std::array<char, 2> get2ToChar() noexcept
-	{
-		::std::array<char, 2> tab = {};
-		uint8_t code = 0;
-
-		tab[code++] = '0';
-		tab[code++] = '1';
-
-		return tab;
-	}
-	constexpr inline ::std::array<char, 2> lut2ToChar = get2ToChar();
-#endif // !SID_LUT2
-
-	//LUT 11<->byte
-#ifndef SID_LUT11
-#define SID_LUT11
-	constexpr ::std::array<uint8_t, 256> getCharTo11() noexcept
-	{
-		::std::array<uint8_t, 256> tab = {};
-		uint8_t code = 0;
-		code++;
-
-		for (size_t i = 0; i <= '9' - '0'; i++)
-			tab[i + '0'] = code++;
-
-		return tab;
-	}
-	constexpr inline ::std::array<uint8_t, 256> lutCharTo11 = getCharTo11();
-
-	constexpr ::std::array<char, 11> get11ToChar() noexcept
-	{
-		::std::array<char, 11> tab = {};
-		uint8_t code = 0;
-
-		tab[code++] = '\0';
-
-		for (size_t i = '0'; i <= '9'; i++)
-			tab[code++] = i;
-
-		return tab;
-	}
-	constexpr inline ::std::array<char, 11> lut11ToChar = get11ToChar();
-#endif // !SID_LUT11
-
-	//LUT 17<->byte
-#ifndef SID_LUT17
-#define SID_LUT17
-	constexpr ::std::array<uint8_t, 256> getCharTo17() noexcept
-	{
-		::std::array<uint8_t, 256> tab = {};
-		uint8_t code = 0;
-		code++;
-
-		for (size_t i = 0; i <= '9' - '0'; i++)
-			tab[i + '0'] = code++;
-
-		for (size_t i = 0; i <= 'F' - 'A'; i++)		//A-Z -> 11-36
-			tab[i + 'A'] = tab[i + 'a'] = code++;
-
-		return tab;
-	}
-	constexpr inline ::std::array<uint8_t, 256> lutCharTo17 = getCharTo17();
-
-	constexpr ::std::array<char, 17> get17ToChar() noexcept
-	{
-		::std::array<char, 17> tab = {};
-		uint8_t code = 0;
-
-		tab[code++] = '\0';
-
-		for (size_t i = '0'; i <= '9'; i++)
-			tab[code++] = i;
-
-		for (size_t i = 'A'; i <= 'F'; i++)
-			tab[code++] = i;
-
-		return tab;
-	}
-	constexpr inline ::std::array<char, 17> lut17ToChar = get17ToChar();
-#endif // !SID_LUT17
+	constexpr inline ::std::array<char, 256> lut256ToChar = get256ToChar();
+#endif // !SID_LUT256
 
 
 
-#ifndef EXTRA_NUM_0
-#define EXTRA_NUM_0 extra_num_0
-#endif
-#ifndef EXTRA_NUM_1
-#define EXTRA_NUM_1 extra_num_1
-#endif
-#ifndef EXTRA_NUM_2
-#define EXTRA_NUM_2 extra_num_2
-#endif
-#ifndef EXTRA_NUM_3
-#define EXTRA_NUM_3 extra_num_3
-#endif
-#ifndef EXTRA_NUM_4
-#define EXTRA_NUM_4 extra_num_4
-#endif
-#ifndef EXTRA_NUM_5
-#define EXTRA_NUM_5 extra_num_5
-#endif
-#ifndef EXTRA_NUM_6
-#define EXTRA_NUM_6 extra_num_6
-#endif
-#ifndef EXTRA_NUM_7
-#define EXTRA_NUM_7 extra_num_7
-#endif
-#ifndef EXTRA_NUM_8
-#define EXTRA_NUM_8 extra_num_8
-#endif
-#ifndef EXTRA_NUM_9
-#define EXTRA_NUM_9 extra_num_9
-#endif
-#ifndef EXTRA_NUM_A
-#define EXTRA_NUM_A extra_num_A
-#endif
-#ifndef EXTRA_NUM_B
-#define EXTRA_NUM_B extra_num_B
-#endif
-#ifndef EXTRA_NUM_C
-#define EXTRA_NUM_C extra_num_C
-#endif
-#ifndef EXTRA_NUM_D
-#define EXTRA_NUM_D extra_num_D
-#endif
-#ifndef EXTRA_NUM_E
-#define EXTRA_NUM_E extra_num_E
-#endif
-#ifndef EXTRA_NUM_F
-#define EXTRA_NUM_F extra_num_F
-#endif
 
-#ifndef EXTRA_TXT_0
-#define EXTRA_TXT_0 extra_txt_0
-#endif
-#ifndef EXTRA_TXT_1
-#define EXTRA_TXT_1 extra_txt_1
-#endif
-#ifndef EXTRA_TXT_2
-#define EXTRA_TXT_2 extra_txt_2
-#endif
-#ifndef EXTRA_TXT_3
-#define EXTRA_TXT_3 extra_txt_3
-#endif
-#ifndef EXTRA_TXT_4
-#define EXTRA_TXT_4 extra_txt_4
-#endif
-#ifndef EXTRA_TXT_5
-#define EXTRA_TXT_5 extra_txt_5
-#endif
-#ifndef EXTRA_TXT_6
-#define EXTRA_TXT_6 extra_txt_6
-#endif
-#ifndef EXTRA_TXT_7
-#define EXTRA_TXT_7 extra_txt_7
-#endif
-#ifndef EXTRA_TXT_8
-#define EXTRA_TXT_8 extra_txt_8
-#endif
-#ifndef EXTRA_TXT_9
-#define EXTRA_TXT_9 extra_txt_9
-#endif
-#ifndef EXTRA_TXT_A
-#define EXTRA_TXT_A extra_txt_A
-#endif
-#ifndef EXTRA_TXT_B
-#define EXTRA_TXT_B extra_txt_B
-#endif
-#ifndef EXTRA_TXT_C
-#define EXTRA_TXT_C extra_txt_C
-#endif
-#ifndef EXTRA_TXT_D
-#define EXTRA_TXT_D extra_txt_D
-#endif
-#ifndef EXTRA_TXT_E
-#define EXTRA_TXT_E extra_txt_E
-#endif
-#ifndef EXTRA_TXT_F
-#define EXTRA_TXT_F extra_txt_F
-#endif
 
-#ifndef EXTRA_HSH_0
-#define EXTRA_HSH_0 extra_hsh_0
-#endif
-#ifndef EXTRA_HSH_1
-#define EXTRA_HSH_1 extra_hsh_1
-#endif
-#ifndef EXTRA_HSH_2
-#define EXTRA_HSH_2 extra_hsh_2
-#endif
-#ifndef EXTRA_HSH_3
-#define EXTRA_HSH_3 extra_hsh_3
-#endif
-#ifndef EXTRA_HSH_4
-#define EXTRA_HSH_4 extra_hsh_4
-#endif
-#ifndef EXTRA_HSH_5
-#define EXTRA_HSH_5 extra_hsh_5
-#endif
-#ifndef EXTRA_HSH_6
-#define EXTRA_HSH_6 extra_hsh_6
-#endif
-#ifndef EXTRA_HSH_7
-#define EXTRA_HSH_7 extra_hsh_7
-#endif
-#ifndef EXTRA_HSH_8
-#define EXTRA_HSH_8 extra_hsh_8
-#endif
-#ifndef EXTRA_HSH_9
-#define EXTRA_HSH_9 extra_hsh_9
-#endif
-#ifndef EXTRA_HSH_A
-#define EXTRA_HSH_A extra_hsh_A
-#endif
-#ifndef EXTRA_HSH_B
-#define EXTRA_HSH_B extra_hsh_B
-#endif
-#ifndef EXTRA_HSH_C
-#define EXTRA_HSH_C extra_hsh_C
-#endif
-#ifndef EXTRA_HSH_D
-#define EXTRA_HSH_D extra_hsh_D
-#endif
-#ifndef EXTRA_HSH_E
-#define EXTRA_HSH_E extra_hsh_E
-#endif
-#ifndef EXTRA_HSH_F
-#define EXTRA_HSH_F extra_hsh_F
-#endif
+
 
 
 
@@ -569,78 +336,24 @@ namespace sid {
 			numbers = 0x10000,
 			texts = 0x20000,
 			hashes = 0x40000,
-
 			extra = 0x100000,
-
-			extra_num = extra | numbers,
-			extra_txt = extra | texts,
-			extra_hsh = extra | hashes,
-
-
-
-			error = 0,
-
+			dicts = 0x200000,
+			
+			
+			error = -1,
+			
+			null = 0,
+			
+			number = numbers | 1,
+			
 			hash = hashes | 1,
-
-			bin = numbers | 1,
-			dec,
-			hex,
 
 			alnum = texts | 1,
 			base64,
 			ascii,
 			byte,
-
-			EXTRA_NUM_0 = extra_num | 1,
-			EXTRA_NUM_1,
-			EXTRA_NUM_2,
-			EXTRA_NUM_3,
-			EXTRA_NUM_4,
-			EXTRA_NUM_5,
-			EXTRA_NUM_6,
-			EXTRA_NUM_7,
-			EXTRA_NUM_8,
-			EXTRA_NUM_9,
-			EXTRA_NUM_A,
-			EXTRA_NUM_B,
-			EXTRA_NUM_C,
-			EXTRA_NUM_D,
-			EXTRA_NUM_E,
-			EXTRA_NUM_F,
-
-			EXTRA_TXT_0 = extra_txt | 1,
-			EXTRA_TXT_1,
-			EXTRA_TXT_2,
-			EXTRA_TXT_3,
-			EXTRA_TXT_4,
-			EXTRA_TXT_5,
-			EXTRA_TXT_6,
-			EXTRA_TXT_7,
-			EXTRA_TXT_8,
-			EXTRA_TXT_9,
-			EXTRA_TXT_A,
-			EXTRA_TXT_B,
-			EXTRA_TXT_C,
-			EXTRA_TXT_D,
-			EXTRA_TXT_E,
-			EXTRA_TXT_F,
-
-			EXTRA_HSH_0 = extra_hsh | 1,
-			EXTRA_HSH_1,
-			EXTRA_HSH_2,
-			EXTRA_HSH_3,
-			EXTRA_HSH_4,
-			EXTRA_HSH_5,
-			EXTRA_HSH_6,
-			EXTRA_HSH_7,
-			EXTRA_HSH_8,
-			EXTRA_HSH_9,
-			EXTRA_HSH_A,
-			EXTRA_HSH_B,
-			EXTRA_HSH_C,
-			EXTRA_HSH_D,
-			EXTRA_HSH_E,
-			EXTRA_HSH_F
+			
+			dict = dicts | 1
 		};
 	}
 
@@ -649,411 +362,97 @@ namespace sid {
 	{
 		struct EncodingInfo
 		{
-			uint64_t code;
-			uint64_t mask;
-			uint64_t cdpt;
-			uint64_t lngh;
-			char name[4];
-			uint64_t maxValue;
+			uint64_t frst;	// first code
+			uint64_t last;	// last code
+			uint64_t cdpt;	// code point
+			uint64_t lngh;	// length - number of characters
+			char name[4];	// name
+			uint64_t maxValue;	//max value
 		};
-
+		
+		static constexpr EncodingInfo nullInfo = 
+		{
+			0,											// first code
+			0,											// last code
+			1,											// code point
+			1,											// max length
+			{ 'N', 'U', 'L', 'L' },						// name
+			0											//max value
+		};
+		
 		static constexpr EncodingInfo hashInfo = {
-			uint64_t(0b11110000) << 56,		// code
-			uint64_t(0b11110000) << 56,		// mask
-			16,								// code point
-			15,								// max length
-			{ 'H', 'A', 'S', 'H'},			// name
-			72057594037927935
+			nullInfo.last + 1,							// first code
+			nullInfo.last + 1 + 1152921504606846975,	// last code
+			16,											// code point
+			15,											// max length
+			{ 'H', 'A', 'S', 'H'},						// name
+			1152921504606846975
 		};
 
 		static constexpr EncodingInfo alnumInfo = {
-			uint64_t(0b00000000) << 56,		// code
-			uint64_t(0b10000000) << 56,		// mask
-			37,								// code point
-			12,								// max length
-			{ 'A', 'L', 'N', 'U' },			// name
-			6582952005840035280				// maxValue
+			hashInfo.last + 1,							// first code
+			hashInfo.last + 1 + 9065737908494995455,	// last code
+			38,											// code point
+			12,											// max length
+			{ 'A', 'L', 'N', 'U' },						// name
+			9065737908494995455							// maxValue
 		};
 
 		static constexpr EncodingInfo base64Info = {
-			uint64_t(0b10000000) << 56,		// code
-			uint64_t(0b11000000) << 56,		// mask
-			73,								// code point
-			10,								// max length
-			{ 'B', '6', '4', '_' },			// name
-			58871586708267912				// maxValue
+			alnumInfo.last + 1,							// first code
+			alnumInfo.last + 1 + 4297625829703557648,	// last code
+			73,											// code point
+			10,											// max length
+			{ 'B', '6', '4', '_' },						// name
+			4297625829703557648							// maxValue
 		};
 
 		static constexpr EncodingInfo asciiInfo = {
-			uint64_t(0b11101100) << 56,		// code
-			uint64_t(0b11111110) << 56,		// mask
-			131,								// code point
-			8,								// max length
-			{ 'A', 'S', 'C', 'I' },			// name
-			86730203469006240				// maxValue
+			base64Info.last + 1,						// first code
+			base64Info.last + 1 + 72057594037927935,	// last code
+			128,										// code point
+			8,											// max length
+			{ 'A', 'S', 'C', 'I' },						// name
+			72057594037927935							// maxValue
 		};
 
 		static constexpr EncodingInfo byteInfo = {
-			uint64_t(0b11101110) << 56,		// code
-			uint64_t(0b11111110) << 56,		// mask
-			257,								// code point
-			7,								// max length
-			{ 'B', 'Y', 'T', 'E' },			// name
-			74051159531521793				// maxValue
+			asciiInfo.last + 1,							// first code
+			asciiInfo.last + 1 + 72057594037927935,		// last code
+			256,										// code point
+			7,											// max length
+			{ 'B', 'Y', 'T', 'E' },						// name
+			72057594037927935							// maxValue
 		};
 
-		static constexpr EncodingInfo binInfo = {
-			uint64_t(0b11000000) << 56,		// code
-			uint64_t(0b11110000) << 56,		// mask
-			2,								// code point
-			60,								// max length
-			{ 'B', 'I', 'N', '_' },			// name
-			1152921504606846975				// maxValue
+		static constexpr EncodingInfo numberInfo = {
+			byteInfo.last + 1,							// first code
+			byteInfo.last + 1 + 1152921504606846975,	// last code
+			16,											// code point
+			15,											// max length
+			{ 'N', 'M', 'B', 'R' },						// name
+			1152921504606846975							// maxValue
 		};
 
-		static constexpr EncodingInfo decInfo = {
-			uint64_t(0b11100000) << 56,		// code
-			uint64_t(0b11111000) << 56,		// mask
-			11,								// code point
-			17,							// max length
-			{ 'D', 'E', 'C', '_' },			// name
-			99999999999999999				// maxValue
+		static constexpr EncodingInfo dictInfo = {
+			numberInfo.last + 1,						// first code
+			numberInfo.last + 1 + 1152921504606846975,	// last code
+			32768,										// code point
+			4,											// max length
+			{ 'D', 'I', 'C', 'T' },						// name
+			1152921504606846975							// maxValue
 		};
 
-		static constexpr EncodingInfo hexInfo = {
-			uint64_t(0b11101000) << 56,		// code
-			uint64_t(0b11111100) << 56,		// mask
-			17,								// code point
-			14,								// max length
-			{ 'H', 'E', 'X', '_' },			// name
-			72057594037927935				// maxValue
+		static constexpr EncodingInfo customInfo = {
+			dictInfo.last + 1,							// first code
+			dictInfo.last + 1 + 1480500633614601709,	// last code
+			0,											// code point
+			0,											// max length
+			{ 'C', 'U', 'S', 'T' },						// name
+			1480500633614601709							// maxValue
 		};
-
-
-
-
-#ifndef SID_EXTRA_NUM_COUNT
-#define SID_EXTRA_NUM_COUNT 6
-#endif // !SID_EXTRA_NUM_COUNT
-
-#ifndef SID_EXTRA_TXT_COUNT
-#define SID_EXTRA_TXT_COUNT 6
-#endif // !SID_EXTRA_TXT_COUNT
-
-#ifndef SID_EXTRA_HSH_COUNT
-#define SID_EXTRA_HSH_COUNT 4
-#endif // !SID_EXTRA_HSH_COUNT
-
-#define SID_FIRST_EXTRA_NUM 0
-#define SID_FIRST_EXTRA_TXT SID_FIRST_EXTRA_NUM+SID_EXTRA_NUM_COUNT
-#define SID_FIRST_EXTRA_HSH SID_FIRST_EXTRA_TXT+SID_EXTRA_TXT_COUNT
-#define SID_FIRST_EXTRA_END SID_FIRST_EXTRA_HSH+SID_EXTRA_HSH_COUNT
-		static_assert(SID_FIRST_EXTRA_END <= 16);
-
-		static inline constexpr uint64_t extraCodes[16] = {
-			uint64_t(0b11010000) << 56,
-			uint64_t(0b11010001) << 56,
-			uint64_t(0b11010010) << 56,
-			uint64_t(0b11010011) << 56,
-			uint64_t(0b11010100) << 56,
-			uint64_t(0b11010101) << 56,
-			uint64_t(0b11010110) << 56,
-			uint64_t(0b11010111) << 56,
-			uint64_t(0b11011000) << 56,
-			uint64_t(0b11011001) << 56,
-			uint64_t(0b11011010) << 56,
-			uint64_t(0b11011011) << 56,
-			uint64_t(0b11011100) << 56,
-			uint64_t(0b11011101) << 56,
-			uint64_t(0b11011110) << 56,
-			uint64_t(0b11011111) << 56
-		};
-
-
-
-#ifndef SID_EXTRA_NUM_NAME_0
-#define SID_EXTRA_NUM_NAME_0 "XN_0"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_1
-#define SID_EXTRA_NUM_NAME_1 "XN_1"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_2
-#define SID_EXTRA_NUM_NAME_2 "XN_2"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_3
-#define SID_EXTRA_NUM_NAME_3 "XN_3"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_4
-#define SID_EXTRA_NUM_NAME_4 "XN_4"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_5
-#define SID_EXTRA_NUM_NAME_5 "XN_5"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_6
-#define SID_EXTRA_NUM_NAME_6 "XN_6"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_7
-#define SID_EXTRA_NUM_NAME_7 "XN_7"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_8
-#define SID_EXTRA_NUM_NAME_8 "XN_8"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_9
-#define SID_EXTRA_NUM_NAME_9 "XN_9"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_A
-#define SID_EXTRA_NUM_NAME_A "XN_A"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_B
-#define SID_EXTRA_NUM_NAME_B "XN_B"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_C
-#define SID_EXTRA_NUM_NAME_C "XN_C"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_D
-#define SID_EXTRA_NUM_NAME_D "XN_D"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_E
-#define SID_EXTRA_NUM_NAME_E "XN_E"
-#endif
-#ifndef SID_EXTRA_NUM_NAME_F
-#define SID_EXTRA_NUM_NAME_F "XN_F"
-#endif
-
-#ifndef SID_EXTRA_TXT_NAME_0
-#define SID_EXTRA_TXT_NAME_0 "XT_0"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_1
-#define SID_EXTRA_TXT_NAME_1 "XT_1"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_2
-#define SID_EXTRA_TXT_NAME_2 "XT_2"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_3
-#define SID_EXTRA_TXT_NAME_3 "XT_3"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_4
-#define SID_EXTRA_TXT_NAME_4 "XT_4"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_5
-#define SID_EXTRA_TXT_NAME_5 "XT_5"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_6
-#define SID_EXTRA_TXT_NAME_6 "XT_6"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_7
-#define SID_EXTRA_TXT_NAME_7 "XT_7"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_8
-#define SID_EXTRA_TXT_NAME_8 "XT_8"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_9
-#define SID_EXTRA_TXT_NAME_9 "XT_9"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_A
-#define SID_EXTRA_TXT_NAME_A "XT_A"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_B
-#define SID_EXTRA_TXT_NAME_B "XT_B"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_C
-#define SID_EXTRA_TXT_NAME_C "XT_C"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_D
-#define SID_EXTRA_TXT_NAME_D "XT_D"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_E
-#define SID_EXTRA_TXT_NAME_E "XT_E"
-#endif
-#ifndef SID_EXTRA_TXT_NAME_F
-#define SID_EXTRA_TXT_NAME_F "XT_F"
-#endif
-
-#ifndef SID_EXTRA_HSH_NAME_0
-#define SID_EXTRA_HSH_NAME_0 "XH_0"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_1
-#define SID_EXTRA_HSH_NAME_1 "XH_1"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_2
-#define SID_EXTRA_HSH_NAME_2 "XH_2"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_3
-#define SID_EXTRA_HSH_NAME_3 "XH_3"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_4
-#define SID_EXTRA_HSH_NAME_4 "XH_4"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_5
-#define SID_EXTRA_HSH_NAME_5 "XH_5"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_6
-#define SID_EXTRA_HSH_NAME_6 "XH_6"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_7
-#define SID_EXTRA_HSH_NAME_7 "XH_7"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_8
-#define SID_EXTRA_HSH_NAME_8 "XH_8"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_9
-#define SID_EXTRA_HSH_NAME_9 "XH_9"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_A
-#define SID_EXTRA_HSH_NAME_A "XH_A"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_B
-#define SID_EXTRA_HSH_NAME_B "XH_B"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_C
-#define SID_EXTRA_HSH_NAME_C "XH_C"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_D
-#define SID_EXTRA_HSH_NAME_D "XH_D"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_E
-#define SID_EXTRA_HSH_NAME_E "XH_E"
-#endif
-#ifndef SID_EXTRA_HSH_NAME_F
-#define SID_EXTRA_HSH_NAME_F "XH_F"
-#endif
-
-
-		static inline constexpr const char *extraNumNames[16] = {
-			SID_EXTRA_NUM_NAME_0,
-			SID_EXTRA_NUM_NAME_1,
-			SID_EXTRA_NUM_NAME_2,
-			SID_EXTRA_NUM_NAME_3,
-			SID_EXTRA_NUM_NAME_4,
-			SID_EXTRA_NUM_NAME_5,
-			SID_EXTRA_NUM_NAME_6,
-			SID_EXTRA_NUM_NAME_7,
-			SID_EXTRA_NUM_NAME_8,
-			SID_EXTRA_NUM_NAME_9,
-			SID_EXTRA_NUM_NAME_A,
-			SID_EXTRA_NUM_NAME_B,
-			SID_EXTRA_NUM_NAME_C,
-			SID_EXTRA_NUM_NAME_D,
-			SID_EXTRA_NUM_NAME_E,
-			SID_EXTRA_NUM_NAME_F
-		};
-
-		static inline constexpr const char* extraTxtNames[16] = {
-			SID_EXTRA_TXT_NAME_0,
-			SID_EXTRA_TXT_NAME_1,
-			SID_EXTRA_TXT_NAME_2,
-			SID_EXTRA_TXT_NAME_3,
-			SID_EXTRA_TXT_NAME_4,
-			SID_EXTRA_TXT_NAME_5,
-			SID_EXTRA_TXT_NAME_6,
-			SID_EXTRA_TXT_NAME_7,
-			SID_EXTRA_TXT_NAME_8,
-			SID_EXTRA_TXT_NAME_9,
-			SID_EXTRA_TXT_NAME_A,
-			SID_EXTRA_TXT_NAME_B,
-			SID_EXTRA_TXT_NAME_C,
-			SID_EXTRA_TXT_NAME_D,
-			SID_EXTRA_TXT_NAME_E,
-			SID_EXTRA_TXT_NAME_F
-		};
-
-		static inline constexpr const char* extraHshNames[16] = {
-			SID_EXTRA_HSH_NAME_0,
-			SID_EXTRA_HSH_NAME_1,
-			SID_EXTRA_HSH_NAME_2,
-			SID_EXTRA_HSH_NAME_3,
-			SID_EXTRA_HSH_NAME_4,
-			SID_EXTRA_HSH_NAME_5,
-			SID_EXTRA_HSH_NAME_6,
-			SID_EXTRA_HSH_NAME_7,
-			SID_EXTRA_HSH_NAME_8,
-			SID_EXTRA_HSH_NAME_9,
-			SID_EXTRA_HSH_NAME_A,
-			SID_EXTRA_HSH_NAME_B,
-			SID_EXTRA_HSH_NAME_C,
-			SID_EXTRA_HSH_NAME_D,
-			SID_EXTRA_HSH_NAME_E,
-			SID_EXTRA_HSH_NAME_F
-		};
-
-		constexpr std::array<EncodingInfo, SID_EXTRA_NUM_COUNT> getExtraNumInfo()
-		{
-			std::array<EncodingInfo, SID_EXTRA_NUM_COUNT> result = {};
-
-			int codeindex = SID_FIRST_EXTRA_NUM;
-			int extraindex = 0;
-			for (auto& e : result)
-			{
-				assert(extraNumNames[extraindex] != nullptr);
-
-				e.code = extraCodes[codeindex++];
-				e.mask = uint64_t(0b11111111) << 56;
-				e.lngh = 56;
-				e.cdpt = 2;
-				e.name[0] = extraNumNames[extraindex][0];
-				e.name[1] = extraNumNames[extraindex][1];
-				e.name[2] = extraNumNames[extraindex][2];
-				e.name[3] = extraNumNames[extraindex][3];
-				e.maxValue = 72057594037927935;
-
-				extraindex++;
-			}
-			return result;
-		}
-
-		constexpr std::array<EncodingInfo, SID_EXTRA_TXT_COUNT> getExtraTxtInfo()
-		{
-			std::array<EncodingInfo, SID_EXTRA_TXT_COUNT> result = {};
-
-			int codeindex = SID_FIRST_EXTRA_TXT;
-			int extraindex = 0;
-			for (auto& e : result)
-			{
-				assert(extraNumNames[extraindex] != nullptr);
-				e.code = extraCodes[codeindex++];
-				e.mask = uint64_t(0b11111111) << 56;
-				e.lngh = 9;
-				e.cdpt = 73;
-				e.name[0] = extraTxtNames[extraindex][0];
-				e.name[1] = extraTxtNames[extraindex][1];
-				e.name[2] = extraTxtNames[extraindex][2];
-				e.name[3] = extraTxtNames[extraindex][3];
-				e.maxValue = 58871586708267912;
-
-				extraindex++;
-			}
-			return result;
-		}
 		
-		constexpr std::array<EncodingInfo, SID_EXTRA_HSH_COUNT> getExtraHshInfo()
-		{
-			std::array<EncodingInfo, SID_EXTRA_HSH_COUNT> result = {};
-
-			int codeindex = SID_FIRST_EXTRA_HSH;
-			int extraindex = 0;
-			for (auto& e : result)
-			{
-				assert(extraNumNames[extraindex] != nullptr);
-				e.code = extraCodes[codeindex++];
-				e.mask = uint64_t(0b11111111) << 56;
-				e.lngh = 14;
-				e.cdpt = 16;
-				e.name[0] = extraHshNames[extraindex][0];
-				e.name[1] = extraHshNames[extraindex][1];
-				e.name[2] = extraHshNames[extraindex][2];
-				e.name[3] = extraHshNames[extraindex][3];
-				e.maxValue = 72057594037927935;
-
-				extraindex++;
-			}
-			return result;
-		}
-
-
-		static inline constexpr auto extra_num = getExtraNumInfo();
-		static inline constexpr auto extra_txt = getExtraTxtInfo();
-		static inline constexpr auto extra_hsh = getExtraHshInfo();
-
+		static_assert(customInfo.last == 0xFFFF'FFFF'FFFF'FFFF);
 	}
 
 
@@ -1069,33 +468,28 @@ namespace sid {
 		PackType::PT type;
 	};
 
-	template <uint64_t CODE, uint64_t MASK>
+	template <uint64_t FIRSTCODE, uint64_t MAX_VALUE>
 	constexpr SID packHashTempl(uint64_t hash) noexcept {
 		
-		hash = ((hash & ~MASK) | CODE);
+		hash = (hash % MAX_VALUE) + FIRSTCODE;
 
 		hash = shuffle(hash);
 
 		return { hash };
 	}
 
-	template <uint64_t CODE, uint64_t MASK>
+	template <uint64_t FIRSTCODE, uint64_t MAX_VALUE>
 	constexpr SID packHashTempl(const char* data, size_t size) noexcept {
 		if (data == nullptr) size = 0;
-
-		uint64_t hash = ((hashFunc(data, size) & ~MASK) | CODE);
-
-		hash = shuffle(hash);
-
-		return { hash };
+		return packHashTempl<FIRSTCODE, MAX_VALUE>(hashFunc(data, size));
 	}
 
-	template <uint64_t CODE, uint64_t MASK, uint64_t MAX_VALUE>
-	constexpr SID packBinTempl(uint64_t number) noexcept {
+	template <uint64_t FIRSTCODE, uint64_t MAX_VALUE>
+	constexpr SID packNumberTempl(uint64_t number) noexcept {
 
 		if (number <= MAX_VALUE)
 		{
-			number = ((number & ~MASK) | CODE);
+			number = number + FIRSTCODE;
 
 			number = shuffle(number);
 
@@ -1106,13 +500,33 @@ namespace sid {
 //#if SID_ASSERT_FALLTHROUGH_HASHING!=0
 //			assert(false);
 //#endif
-			return packHashTempl<ip::hashInfo.code, ip::hashInfo.mask>(number);
+			return packHashTempl<ip::hashInfo.frst, ip::hashInfo.maxValue>(number);
 		}
 	}
+	
+	template <uint64_t FIRSTCODE, uint64_t MAX_VALUE>
+	constexpr SID packDictTempl(uint64_t encodedWords) noexcept {
 
+		if (encodedWords <= MAX_VALUE)
+		{
+			encodedWords = encodedWords + FIRSTCODE;
+
+			encodedWords = shuffle(encodedWords);
+
+			return { encodedWords };
+		}
+		else
+		{
+//#if SID_ASSERT_FALLTHROUGH_HASHING!=0
+//			assert(false);
+//#endif
+			return packHashTempl<ip::hashInfo.frst, ip::hashInfo.maxValue>(encodedWords);
+		}
+	}
+	
 	template <
-		uint64_t CODE, 
-		uint64_t MASK,
+		uint64_t FIRSTCODE, 
+		uint64_t MAX_VALUE,
 		uint64_t CODE_POINTS, 
 		uint64_t LENGTH, 
 		typename LUT_TYPE>
@@ -1127,7 +541,7 @@ namespace sid {
 			for (size_t i = 0; i < size; ++i)
 				hash = hash * CODE_POINTS + LUT[uint8_t(data[i])];
 
-			hash = ((hash & ~MASK) | CODE);
+			hash = hash + FIRSTCODE;
 
 			hash = shuffle(hash);
 
@@ -1138,56 +552,22 @@ namespace sid {
 //#if SID_ASSERT_FALLTHROUGH_HASHING!=0
 //			assert(false);
 //#endif
-			return packHashTempl<ip::hashInfo.code, ip::hashInfo.mask>(data, size);
+			return packHashTempl<ip::hashInfo.frst, ip::hashInfo.maxValue>(data, size);
 		}
 	}
-
+	
 	template <
-		uint64_t CODE, 
-		uint64_t MASK,
-		uint64_t CODE_POINTS,
-		uint64_t MAX_VALUE,
-		uint64_t BASE>
-	constexpr SID packNumberTempl(uint64_t number) noexcept {
-
-		if (number <= MAX_VALUE)
-		{
-			uint64_t digit = 1;
-			uint64_t hash = 0;
-			while (number)
-			{
-				hash = hash + (number % BASE + 1) * digit ;
-				number = number / BASE;
-				digit = digit * CODE_POINTS;
-			}
-
-			hash = ((hash & ~MASK) | CODE);
-
-			hash = shuffle(hash);
-
-			return { hash };
-		}
-		else
-		{
-//#if SID_ASSERT_FALLTHROUGH_HASHING!=0
-//			assert(false);
-//#endif
-			return packHashTempl<ip::hashInfo.code, ip::hashInfo.mask>(number);
-		}
-	}
-
-	template <
-		uint64_t CODE,
-		uint64_t MASK,
+		uint64_t FIRSTCODE, 
+		uint64_t LASTCODE,
 		uint64_t CODE_POINTS,
 		uint64_t LENGTH,
 		typename LUT_TYPE>
-	constexpr bool unpackTempl(uint64_t hsh, ::std::array<char, 64>& text, const LUT_TYPE& LUT, const char NAME[4]) noexcept
+	constexpr bool unpackTempl(uint64_t hsh, ::std::array<char, 20>& text, const LUT_TYPE& LUT, const char NAME[4]) noexcept
 	{
-		if ((hsh & MASK) == CODE)
+		if ((hsh >= FIRSTCODE) && (hsh <= LASTCODE))
 		{
-			hsh &= ~(MASK);
-			for (intptr_t i = 63; i > 63 - intptr_t(LENGTH); --i)
+			hsh = hsh - FIRSTCODE;
+			for (intptr_t i = 19; i > 19 - intptr_t(LENGTH); --i)
 			{
 				uint8_t code = uint8_t(hsh % CODE_POINTS);
 				hsh = hsh / CODE_POINTS;
@@ -1203,14 +583,14 @@ namespace sid {
 	}
 
 	template <
-		uint64_t CODE,
-		uint64_t MASK,
+		uint64_t FIRSTCODE, 
+		uint64_t LASTCODE,
 		PackType::PT TYPE>
-		constexpr bool unpackNumberBinaryTempl(uint64_t hsh, UnpackedNumber &result) noexcept
+	constexpr bool unpackNumberTempl(uint64_t hsh, UnpackedNumber& result) noexcept
 	{
-		if ((hsh & MASK) == CODE)
+		if ((hsh >= FIRSTCODE) && (hsh <= LASTCODE))
 		{
-			hsh &= ~(MASK);
+			hsh = hsh - FIRSTCODE;
 			result = { hsh, TYPE };
 			return  true;
 		}
@@ -1218,50 +598,17 @@ namespace sid {
 	}
 
 	template <
-		uint64_t CODE,
-		uint64_t MASK,
-		uint64_t CODE_POINTS,
-		PackType::PT TYPE,
-		uint64_t BASE>
-		constexpr bool unpackNumberTempl(uint64_t hsh, UnpackedNumber& result) noexcept
-	{
-		if ((hsh & MASK) == CODE)
-		{
-			hsh &= ~(MASK);
-
-			uint64_t digit = 1;
-			uint64_t number = 0;
-			while (hsh)
-			{
-				uint64_t hashmod = hsh % CODE_POINTS;
-				hsh = hsh / CODE_POINTS;
-				if (hashmod == 0)
-				{ 
-					result = { 0, PackType::error };
-					return true;
-				}
-				number = number + digit * (hashmod - 1);
-				digit = digit * BASE;
-			}
-
-			result = { number, TYPE };
-			return  true;
-		}
-		return false;
-	}
-
-	template <
-		uint64_t CODE,
-		uint64_t MASK,
+		uint64_t FIRSTCODE, 
+		uint64_t LASTCODE,
 		uint64_t CODE_POINTS,
 		uint64_t LENGTH,
 		PackType::PT TYPE,
 		typename LUT_TYPE>
 		constexpr bool unpackTextTempl(uint64_t hsh, UnpackedText& result, const LUT_TYPE& LUT) noexcept
 	{
-		if ((hsh & MASK) == CODE)
+		if ((hsh >= FIRSTCODE) && (hsh <= LASTCODE))
 		{
-			hsh &= ~(MASK);
+			hsh = hsh - FIRSTCODE;
 
 			result.type = TYPE;
 
@@ -1296,115 +643,46 @@ namespace sid {
 
 	//put 60bit value (4 MSBs are truncated)
 	constexpr SID packHash(uint64_t hash) noexcept {
-		return packHashTempl<ip::hashInfo.code, ip::hashInfo.mask>(hash);
+		return packHashTempl<ip::hashInfo.frst, ip::hashInfo.maxValue>(hash);
 	}
 
-	//pack or hash string to 64bit
+	//hash string to 64bit
 	constexpr SID packHash(const char* data, size_t size) noexcept {
-		return packHashTempl<ip::hashInfo.code, ip::hashInfo.mask>(data, size);
+		return packHashTempl<ip::hashInfo.frst, ip::hashInfo.maxValue>(data, size);
 	}
 
 	//put 60bit value or hash is bigger
-	constexpr SID packBin(uint64_t number) noexcept {
-		return packBinTempl<ip::binInfo.code, ip::binInfo.mask, ip::binInfo.maxValue>(number);
+	constexpr SID packNumber(uint64_t number) noexcept {
+		return packNumberTempl<ip::numberInfo.frst, ip::numberInfo.maxValue>(number);
 	}
-
-	//pack or hash string to 64bit
-	constexpr SID packBin(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::binInfo.code, ip::binInfo.mask, ip::binInfo.cdpt, ip::binInfo.lngh>(data, size, lutCharTo2);
-	}
-
 	
-
-	//put 17 decimal digit value
-	constexpr SID packDec(uint64_t number) noexcept {
-		return packNumberTempl<ip::decInfo.code, ip::decInfo.mask, ip::decInfo.cdpt,ip::decInfo.maxValue, 10>(number);
+	//put 60bit value or hash is bigger
+	constexpr SID packDict(uint64_t encodedWords) noexcept {
+		return packDictTempl<ip::dictInfo.frst, ip::dictInfo.maxValue>(encodedWords);
 	}
-
-	//pack or hash string to 64bit
-	constexpr SID packDec(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::decInfo.code, ip::decInfo.mask, ip::decInfo.cdpt, ip::decInfo.lngh>(data, size, lutCharTo11);
-	}
-
-
-
-	//put 14 hex digit value
-	constexpr SID packHex(uint64_t number) noexcept {
-		return packNumberTempl<ip::hexInfo.code, ip::hexInfo.mask, ip::hexInfo.cdpt, ip::hexInfo.maxValue, 16>(number);
-	}
-
-	//pack or hash string to 64bit
-	constexpr SID packHex(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::hexInfo.code, ip::hexInfo.mask, ip::hexInfo.cdpt, ip::hexInfo.lngh>(data, size, lutCharTo17);
-	}
-
-
+	
 	//pack or hash string to 64bit
 	constexpr SID packAlnum(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::alnumInfo.code, ip::alnumInfo.mask, ip::alnumInfo.cdpt, ip::alnumInfo.lngh>(data, size, lutCharTo37);
+		return packStringTempl<ip::alnumInfo.frst, ip::alnumInfo.maxValue, ip::alnumInfo.cdpt, ip::alnumInfo.lngh>(data, size, lutCharTo38);
 	}
 
 
 	//pack or hash string to 64bit
 	constexpr SID packB64(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::base64Info.code, ip::base64Info.mask, ip::base64Info.cdpt, ip::base64Info.lngh>(data, size, lutCharTo73);
+		return packStringTempl<ip::base64Info.frst, ip::base64Info.maxValue, ip::base64Info.cdpt, ip::base64Info.lngh>(data, size, lutCharTo73);
 	}
 
 
 	//pack or hash string to 64bit
 	constexpr SID packAscii(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::asciiInfo.code, ip::asciiInfo.mask, ip::asciiInfo.cdpt, ip::asciiInfo.lngh>(data, size, lutCharTo131);
+		return packStringTempl<ip::asciiInfo.frst, ip::asciiInfo.maxValue, ip::asciiInfo.cdpt, ip::asciiInfo.lngh>(data, size, lutCharTo128);
 	}
 
 
 	//pack or hash string to 64bit
 	constexpr SID packByte(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::byteInfo.code, ip::byteInfo.mask, ip::byteInfo.cdpt, ip::byteInfo.lngh>(data, size, lutCharTo257);
+		return packStringTempl<ip::byteInfo.frst, ip::byteInfo.maxValue, ip::byteInfo.cdpt, ip::byteInfo.lngh>(data, size, lutCharTo256);
 	}
-
-
-
-
-	//put 56bit value or hash is bigger
-	template<size_t NumIndex>
-	constexpr SID packExtraNum(uint64_t number) noexcept {
-		return packBinTempl<ip::extra_num[NumIndex].code, ip::extra_num[NumIndex].mask, ip::extra_num[NumIndex].maxValue>(number);
-	}
-
-	template<size_t NumIndex>
-	constexpr SID packExtraNum(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::extra_num[NumIndex].code, ip::extra_num[NumIndex].mask, ip::extra_num[NumIndex].cdpt, ip::extra_num[NumIndex].lngh>(data, size, lutCharTo2);
-	}
-
-
-
-	//pack or hash string to 64bit
-	template<size_t NumIndex>
-	constexpr SID packExtraText(const char* data, size_t size) noexcept {
-		return packStringTempl<ip::extra_txt[NumIndex].code, ip::extra_txt[NumIndex].mask, ip::extra_txt[NumIndex].cdpt, ip::extra_txt[NumIndex].lngh>(data, size, lutCharTo73);
-	}
-
-
-
-	//put 56bit value (4 MSBs are truncated)
-	template<size_t NumIndex>
-	constexpr SID packExtraHash(uint64_t hash) noexcept {
-		return packHashTempl<ip::extra_hsh[NumIndex].code, ip::extra_hsh[NumIndex].mask>(hash);
-	}
-
-	//pack or hash string to 64bit
-	template<size_t NumIndex>
-	constexpr SID packExtraHash(const char* data, size_t size) noexcept {
-		return packHashTempl<ip::extra_hsh[NumIndex].code, ip::extra_hsh[NumIndex].mask>(data, size);
-	}
-
-
-
-
-
-
-
-
 
 
 
@@ -1414,248 +692,20 @@ namespace sid {
 
 
 	//unpack or print hash as hex 64bit to 15 char string 
-	constexpr ::std::array<char, 64> unpack(const SID& sid) noexcept 
+	constexpr ::std::array<char, 20> unpack(const SID& sid) noexcept 
 	{
-		::std::array<char, 64> text = {};
+		::std::array<char, 20> text = {};
 
 		uint64_t hsh = sid.val;
 
 		hsh = unshuffle(hsh);
 
-
-		if (unpackTempl<ip::alnumInfo.code, ip::alnumInfo.mask, ip::alnumInfo.cdpt, ip::alnumInfo.lngh>(hsh, text, lut37ToChar, ip::alnumInfo.name)) return text;
-		if (unpackTempl<ip::base64Info.code, ip::base64Info.mask, ip::base64Info.cdpt, ip::base64Info.lngh>(hsh, text, lut73ToChar, ip::base64Info.name)) return text;
-		if (unpackTempl<ip::binInfo.code, ip::binInfo.mask, ip::binInfo.cdpt, ip::binInfo.lngh>(hsh, text, lut2ToChar, ip::binInfo.name)) return text;
-		if (unpackTempl<ip::decInfo.code, ip::decInfo.mask, ip::decInfo.cdpt, ip::decInfo.lngh>(hsh, text, lut11ToChar, ip::decInfo.name)) return text;
-		if (unpackTempl<ip::hexInfo.code, ip::hexInfo.mask, ip::hexInfo.cdpt, ip::hexInfo.lngh>(hsh, text, lut17ToChar, ip::hexInfo.name)) return text;
-		if (unpackTempl<ip::asciiInfo.code, ip::asciiInfo.mask, ip::asciiInfo.cdpt, ip::asciiInfo.lngh>(hsh, text, lut131ToChar, ip::asciiInfo.name)) return text;
-		if (unpackTempl<ip::byteInfo.code, ip::byteInfo.mask, ip::byteInfo.cdpt, ip::byteInfo.lngh>(hsh, text, lut257ToChar, ip::byteInfo.name)) return text;
-		if (unpackTempl<ip::hashInfo.code, ip::hashInfo.mask, ip::hashInfo.cdpt, ip::hashInfo.lngh>(hsh, text, "0123456789ABCDEF", ip::hashInfo.name)) return text;
-
-
-
-
-
-
-#define UNPACK_EXTRA_NUM(NUMINDEX) \
-		if (unpackTempl<ip::extra_num[NUMINDEX].code, ip::extra_num[NUMINDEX].mask, ip::extra_num[NUMINDEX].cdpt, ip::extra_num[NUMINDEX].lngh>(hsh, text, lut2ToChar, ip::extra_num[NUMINDEX].name)) return text;
-
-#if SID_EXTRA_NUM_COUNT>0
-		UNPACK_EXTRA_NUM(0)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>1
-			UNPACK_EXTRA_NUM(1)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>2
-			UNPACK_EXTRA_NUM(2)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>3
-			UNPACK_EXTRA_NUM(3)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>4
-			UNPACK_EXTRA_NUM(4)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>5
-			UNPACK_EXTRA_NUM(5)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>6
-			UNPACK_EXTRA_NUM(6)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>7
-			UNPACK_EXTRA_NUM(7)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>8
-			UNPACK_EXTRA_NUM(8)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>9
-			UNPACK_EXTRA_NUM(9)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>10
-			UNPACK_EXTRA_NUM(10)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>11
-			UNPACK_EXTRA_NUM(11)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>12
-			UNPACK_EXTRA_NUM(12)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>13
-			UNPACK_EXTRA_NUM(13)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>14
-			UNPACK_EXTRA_NUM(14)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>15
-			UNPACK_EXTRA_NUM(15)
-#endif
-
-#undef UNPACK_EXTRA_NUM
-
-			
-
-
-			
-#define UNPACK_EXTRA_TXT(TXTINDEX) \
-			if (unpackTempl<ip::extra_txt[TXTINDEX].code, ip::extra_txt[TXTINDEX].mask, ip::extra_txt[TXTINDEX].cdpt, ip::extra_txt[TXTINDEX].lngh>(hsh, text, lut73ToChar, ip::extra_txt[TXTINDEX].name)) return text;
-
-#if SID_EXTRA_TXT_COUNT>0
-			UNPACK_EXTRA_TXT(0)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>1
-			UNPACK_EXTRA_TXT(1)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>2
-			UNPACK_EXTRA_TXT(2)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>3
-			UNPACK_EXTRA_TXT(3)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>4
-			UNPACK_EXTRA_TXT(4)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>5
-			UNPACK_EXTRA_TXT(5)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>6
-			UNPACK_EXTRA_TXT(6)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>7
-			UNPACK_EXTRA_TXT(7)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>8
-			UNPACK_EXTRA_TXT(8)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>9
-			UNPACK_EXTRA_TXT(9)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>10
-			UNPACK_EXTRA_TXT(10)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>11
-			UNPACK_EXTRA_TXT(11)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>12
-			UNPACK_EXTRA_TXT(12)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>13
-			UNPACK_EXTRA_TXT(13)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>14
-			UNPACK_EXTRA_TXT(14)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>15
-			UNPACK_EXTRA_TXT(15)
-#endif
-
-#undef UNPACK_EXTRA_TXT
-
-
-
-
-
-
-
-
-#define UNPACK_EXTRA_HSH(HSHINDEX) \
-			if (unpackTempl<ip::extra_hsh[HSHINDEX].code, ip::extra_hsh[HSHINDEX].mask, ip::extra_hsh[HSHINDEX].cdpt, ip::extra_hsh[HSHINDEX].lngh>(hsh, text, "0123456789ABCDEF", ip::extra_hsh[HSHINDEX].name)) return text;
-
-#if SID_EXTRA_HSH_COUNT>0
-				UNPACK_EXTRA_HSH(0)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>1
-				UNPACK_EXTRA_HSH(1)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>2
-				UNPACK_EXTRA_HSH(2)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>3
-				UNPACK_EXTRA_HSH(3)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>4
-				UNPACK_EXTRA_HSH(4)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>5
-				UNPACK_EXTRA_HSH(5)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>6
-				UNPACK_EXTRA_HSH(6)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>7
-				UNPACK_EXTRA_HSH(7)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>8
-				UNPACK_EXTRA_HSH(8)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>9
-				UNPACK_EXTRA_HSH(9)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>10
-				UNPACK_EXTRA_HSH(10)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>11
-				UNPACK_EXTRA_HSH(11)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>12
-				UNPACK_EXTRA_HSH(12)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>13
-				UNPACK_EXTRA_HSH(13)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>14
-				UNPACK_EXTRA_HSH(14)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>15
-				UNPACK_EXTRA_HSH(15)
-#endif
-
-#undef UNPACK_EXTRA_HSH
-
-
+		if (unpackTempl<ip::alnumInfo.frst, ip::alnumInfo.last, ip::alnumInfo.cdpt, ip::alnumInfo.lngh>(hsh, text, lut38ToChar, ip::alnumInfo.name)) return text;
+		if (unpackTempl<ip::base64Info.frst, ip::base64Info.last, ip::base64Info.cdpt, ip::base64Info.lngh>(hsh, text, lut73ToChar, ip::base64Info.name)) return text;
+		if (unpackTempl<ip::asciiInfo.frst, ip::asciiInfo.last, ip::asciiInfo.cdpt, ip::asciiInfo.lngh>(hsh, text, lut128ToChar, ip::asciiInfo.name)) return text;
+		if (unpackTempl<ip::byteInfo.frst, ip::byteInfo.last, ip::byteInfo.cdpt, ip::byteInfo.lngh>(hsh, text, lut256ToChar, ip::byteInfo.name)) return text;
+		if (unpackTempl<ip::numberInfo.frst, ip::numberInfo.last, ip::numberInfo.cdpt, ip::numberInfo.lngh>(hsh, text, "0123456789ABCDEF", ip::numberInfo.name)) return text;
+		if (unpackTempl<ip::hashInfo.frst, ip::hashInfo.last, ip::hashInfo.cdpt, ip::hashInfo.lngh>(hsh, text, "0123456789ABCDEF", ip::hashInfo.name)) return text;
 
 		return text;
 	}
@@ -1667,83 +717,19 @@ namespace sid {
 		hsh = unshuffle(hsh);
 		UnpackedNumber result = {};
 
-		if (unpackNumberBinaryTempl<ip::binInfo.code, ip::binInfo.mask, PackType::PT::bin>(hsh, result)) return result;
-		if (unpackNumberTempl<ip::decInfo.code, ip::decInfo.mask, ip::decInfo.cdpt, PackType::PT::dec, 10>(hsh, result)) return result;
-		if (unpackNumberTempl<ip::hexInfo.code, ip::hexInfo.mask, ip::hexInfo.cdpt, PackType::PT::hex, 16>(hsh, result)) return result;
+		if (unpackNumberTempl<ip::numberInfo.frst, ip::numberInfo.last, PackType::PT::number>(hsh, result)) return result;
 
+		return { 0, PackType::error };
+	}
+	
+	constexpr UnpackedNumber unpackDict(const SID& sid)
+	{
+		uint64_t hsh = sid.val;
 
+		hsh = unshuffle(hsh);
+		UnpackedNumber result = {};
 
-
-#define UNPACK_EXTRA_NUM(NUMINDEX, PACKTYPE) \
-		if (unpackNumberBinaryTempl<ip::extra_num[NUMINDEX].code, ip::extra_num[NUMINDEX].mask, PackType::PT::PACKTYPE>(hsh, result)) return result;
-
-#if SID_EXTRA_NUM_COUNT>0
-		UNPACK_EXTRA_NUM(0, EXTRA_NUM_0)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>1
-			UNPACK_EXTRA_NUM(1, EXTRA_NUM_1)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>2
-			UNPACK_EXTRA_NUM(2, EXTRA_NUM_2)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>3
-			UNPACK_EXTRA_NUM(3, EXTRA_NUM_3)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>4
-			UNPACK_EXTRA_NUM(4, EXTRA_NUM_4)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>5
-			UNPACK_EXTRA_NUM(5, EXTRA_NUM_5)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>6
-			UNPACK_EXTRA_NUM(6, EXTRA_NUM_6)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>7
-			UNPACK_EXTRA_NUM(7, EXTRA_NUM_7)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>8
-			UNPACK_EXTRA_NUM(8, EXTRA_NUM_8)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>9
-			UNPACK_EXTRA_NUM(9, EXTRA_NUM_9)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>10
-			UNPACK_EXTRA_NUM(10, EXTRA_NUM_A)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>11
-			UNPACK_EXTRA_NUM(11, EXTRA_NUM_B)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>12
-			UNPACK_EXTRA_NUM(12, EXTRA_NUM_C)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>13
-			UNPACK_EXTRA_NUM(13, EXTRA_NUM_D)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>14
-			UNPACK_EXTRA_NUM(14, EXTRA_NUM_E)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>15
-			UNPACK_EXTRA_NUM(15, EXTRA_NUM_F)
-#endif
-
-#undef UNPACK_EXTRA_NUM
-
-
+		if (unpackNumberTempl<ip::dictInfo.frst, ip::dictInfo.last, PackType::PT::dict>(hsh, result)) return result;
 
 		return { 0, PackType::error };
 	}
@@ -1755,84 +741,10 @@ namespace sid {
 
 		UnpackedText text = {};
 
-		if (unpackTextTempl<ip::alnumInfo.code, ip::alnumInfo.mask, ip::alnumInfo.cdpt, ip::alnumInfo.lngh, PackType::PT::alnum>(hsh, text, lut37ToChar)) return text;
-		if (unpackTextTempl<ip::base64Info.code, ip::base64Info.mask, ip::base64Info.cdpt, ip::base64Info.lngh, PackType::PT::base64>(hsh, text, lut73ToChar)) return text;
-		if (unpackTextTempl<ip::asciiInfo.code, ip::asciiInfo.mask, ip::asciiInfo.cdpt, ip::asciiInfo.lngh, PackType::PT::ascii>(hsh, text, lut131ToChar)) return text;
-		if (unpackTextTempl<ip::byteInfo.code, ip::byteInfo.mask, ip::byteInfo.cdpt, ip::byteInfo.lngh, PackType::PT::byte>(hsh, text, lut257ToChar)) return text;
-
-
-
-
-#define UNPACK_EXTRA_TXT(TXTINDEX, PACKTYPE) \
-		if (unpackTextTempl<ip::extra_txt[TXTINDEX].code, ip::extra_txt[TXTINDEX].mask, ip::extra_txt[TXTINDEX].cdpt, ip::extra_txt[TXTINDEX].lngh, PackType::PT::PACKTYPE>(hsh, text, lut73ToChar)) return text;
-
-#if SID_EXTRA_TXT_COUNT>0
-		UNPACK_EXTRA_TXT(0, EXTRA_TXT_0)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>1
-			UNPACK_EXTRA_TXT(1, EXTRA_TXT_1)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>2
-			UNPACK_EXTRA_TXT(2, EXTRA_TXT_2)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>3
-			UNPACK_EXTRA_TXT(3, EXTRA_TXT_3)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>4
-			UNPACK_EXTRA_TXT(4, EXTRA_TXT_4)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>5
-			UNPACK_EXTRA_TXT(5, EXTRA_TXT_5)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>6
-			UNPACK_EXTRA_TXT(6, EXTRA_TXT_6)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>7
-			UNPACK_EXTRA_TXT(7, EXTRA_TXT_7)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>8
-			UNPACK_EXTRA_TXT(8, EXTRA_TXT_8)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>9
-			UNPACK_EXTRA_TXT(9, EXTRA_TXT_9)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>10
-			UNPACK_EXTRA_TXT(10, EXTRA_TXT_A)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>11
-			UNPACK_EXTRA_TXT(11, EXTRA_TXT_B)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>12
-			UNPACK_EXTRA_TXT(12, EXTRA_TXT_C)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>13
-			UNPACK_EXTRA_TXT(13, EXTRA_TXT_D)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>14
-			UNPACK_EXTRA_TXT(14, EXTRA_TXT_E)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>15
-			UNPACK_EXTRA_TXT(15, EXTRA_TXT_F)
-#endif
-
-#undef UNPACK_EXTRA_TXT
-
-
+		if (unpackTextTempl<ip::alnumInfo.frst, ip::alnumInfo.last, ip::alnumInfo.cdpt, ip::alnumInfo.lngh, PackType::PT::alnum>(hsh, text, lut38ToChar)) return text;
+		if (unpackTextTempl<ip::base64Info.frst, ip::base64Info.last, ip::base64Info.cdpt, ip::base64Info.lngh, PackType::PT::base64>(hsh, text, lut73ToChar)) return text;
+		if (unpackTextTempl<ip::asciiInfo.frst, ip::asciiInfo.last, ip::asciiInfo.cdpt, ip::asciiInfo.lngh, PackType::PT::ascii>(hsh, text, lut128ToChar)) return text;
+		if (unpackTextTempl<ip::byteInfo.frst, ip::byteInfo.last, ip::byteInfo.cdpt, ip::byteInfo.lngh, PackType::PT::byte>(hsh, text, lut256ToChar)) return text;
 
 		return { 0, PackType::error };
 	}
@@ -1872,41 +784,9 @@ namespace std
 
 
 	//SID = 
-	constexpr sid::SID operator"" _SIDBIN(uint64_t number) noexcept
+	constexpr sid::SID operator"" _SIDNUM(uint64_t number) noexcept
 	{
-		return sid::packBin(number);
-	}
-
-	//SID = packed up to 60 {0, 1} or hash if longer 
-	constexpr sid::SID operator"" _SIDBIN(const char* data, size_t size) noexcept
-	{
-		return sid::packBin(data, size);
-	}
-
-
-	//SID = 
-	constexpr sid::SID operator"" _SIDDEC(uint64_t number) noexcept
-	{
-		return sid::packDec(number);
-	}
-
-	//SID = packed up to 17 { \0, 0-9 } or hash if longer 
-	constexpr sid::SID operator"" _SIDDEC(const char* data, size_t size) noexcept
-	{
-		return sid::packDec(data, size);
-	}
-
-
-	//SID =
-	constexpr sid::SID operator"" _SIDHEX(uint64_t number) noexcept
-	{
-		return sid::packHex(number);
-	}
-
-	//SID = packed up to 14 { \0, 0-9, a-f, A-F } or hash if longer 
-	constexpr sid::SID operator"" _SIDHEX(const char* data, size_t size) noexcept
-	{
-		return sid::packHex(data, size);
+		return sid::packNumber(number);
 	}
 
 
@@ -1937,479 +817,6 @@ namespace std
 
 
 
-	//configurable name of extra literals
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_0
-#define SID_EXTRA_NUM_LITERAL_NAME_0 _SIDXN0
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_1
-#define SID_EXTRA_NUM_LITERAL_NAME_1 _SIDXN1
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_2
-#define SID_EXTRA_NUM_LITERAL_NAME_2 _SIDXN2
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_3
-#define SID_EXTRA_NUM_LITERAL_NAME_3 _SIDXN3
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_4
-#define SID_EXTRA_NUM_LITERAL_NAME_4 _SIDXN4
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_5
-#define SID_EXTRA_NUM_LITERAL_NAME_5 _SIDXN5
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_6
-#define SID_EXTRA_NUM_LITERAL_NAME_6 _SIDXN6
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_7
-#define SID_EXTRA_NUM_LITERAL_NAME_7 _SIDXN7
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_8
-#define SID_EXTRA_NUM_LITERAL_NAME_8 _SIDXN8
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_9
-#define SID_EXTRA_NUM_LITERAL_NAME_9 _SIDXN9
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_10
-#define SID_EXTRA_NUM_LITERAL_NAME_10 _SIDXN10
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_11
-#define SID_EXTRA_NUM_LITERAL_NAME_11 _SIDXN11
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_12
-#define SID_EXTRA_NUM_LITERAL_NAME_12 _SIDXN12
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_13
-#define SID_EXTRA_NUM_LITERAL_NAME_13 _SIDXN13
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_14
-#define SID_EXTRA_NUM_LITERAL_NAME_14 _SIDXN14
-#endif
-
-#ifndef SID_EXTRA_NUM_LITERAL_NAME_15
-#define SID_EXTRA_NUM_LITERAL_NAME_15 _SIDXN15
-#endif
-
-
-
-
-
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_0
-#define SID_EXTRA_TXT_LITERAL_NAME_0 _SIDXT0
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_1
-#define SID_EXTRA_TXT_LITERAL_NAME_1 _SIDXT1
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_2
-#define SID_EXTRA_TXT_LITERAL_NAME_2 _SIDXT2
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_3
-#define SID_EXTRA_TXT_LITERAL_NAME_3 _SIDXT3
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_4
-#define SID_EXTRA_TXT_LITERAL_NAME_4 _SIDXT4
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_5
-#define SID_EXTRA_TXT_LITERAL_NAME_5 _SIDXT5
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_6
-#define SID_EXTRA_TXT_LITERAL_NAME_6 _SIDXT6
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_7
-#define SID_EXTRA_TXT_LITERAL_NAME_7 _SIDXT7
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_8
-#define SID_EXTRA_TXT_LITERAL_NAME_8 _SIDXT8
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_9
-#define SID_EXTRA_TXT_LITERAL_NAME_9 _SIDXT9
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_10
-#define SID_EXTRA_TXT_LITERAL_NAME_10 _SIDXT10
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_11
-#define SID_EXTRA_TXT_LITERAL_NAME_11 _SIDXT11
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_12
-#define SID_EXTRA_TXT_LITERAL_NAME_12 _SIDXT12
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_13
-#define SID_EXTRA_TXT_LITERAL_NAME_13 _SIDXT13
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_14
-#define SID_EXTRA_TXT_LITERAL_NAME_14 _SIDXT14
-#endif
-
-#ifndef SID_EXTRA_TXT_LITERAL_NAME_15
-#define SID_EXTRA_TXT_LITERAL_NAME_15 _SIDXT15
-#endif
-
-
-
-
-
-
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_0
-#define SID_EXTRA_HSH_LITERAL_NAME_0 _SIDXH0
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_1
-#define SID_EXTRA_HSH_LITERAL_NAME_1 _SIDXH1
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_2
-#define SID_EXTRA_HSH_LITERAL_NAME_2 _SIDXH2
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_3
-#define SID_EXTRA_HSH_LITERAL_NAME_3 _SIDXH3
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_4
-#define SID_EXTRA_HSH_LITERAL_NAME_4 _SIDXH4
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_5
-#define SID_EXTRA_HSH_LITERAL_NAME_5 _SIDXH5
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_6
-#define SID_EXTRA_HSH_LITERAL_NAME_6 _SIDXH6
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_7
-#define SID_EXTRA_HSH_LITERAL_NAME_7 _SIDXH7
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_8
-#define SID_EXTRA_HSH_LITERAL_NAME_8 _SIDXH8
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_9
-#define SID_EXTRA_HSH_LITERAL_NAME_9 _SIDXH9
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_10
-#define SID_EXTRA_HSH_LITERAL_NAME_10 _SIDXH10
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_11
-#define SID_EXTRA_HSH_LITERAL_NAME_11 _SIDXH11
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_12
-#define SID_EXTRA_HSH_LITERAL_NAME_12 _SIDXH12
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_13
-#define SID_EXTRA_HSH_LITERAL_NAME_13 _SIDXH13
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_14
-#define SID_EXTRA_HSH_LITERAL_NAME_14 _SIDXH14
-#endif
-
-#ifndef SID_EXTRA_HSH_LITERAL_NAME_15
-#define SID_EXTRA_HSH_LITERAL_NAME_15 _SIDXH15
-#endif
-
-
-
-
-	//define user defined literals for extra number (as int or string)
-
-#define SIDLITERALNUM(NUMINDEX, LITERALNAME) \
-	constexpr sid::SID operator"" LITERALNAME(uint64_t number) noexcept\
-	{\
-		return sid::packExtraNum<NUMINDEX>(number);\
-	}\
-	constexpr sid::SID operator"" LITERALNAME(const char* data, size_t size) noexcept\
-	{\
-		return sid::packExtraNum<NUMINDEX>(data, size);\
-	}
-
-#if SID_EXTRA_NUM_COUNT>0
-	SIDLITERALNUM(0, SID_EXTRA_NUM_LITERAL_NAME_0)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>1
-		SIDLITERALNUM(1, SID_EXTRA_NUM_LITERAL_NAME_1)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>2
-		SIDLITERALNUM(2, SID_EXTRA_NUM_LITERAL_NAME_2)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>3
-		SIDLITERALNUM(3, SID_EXTRA_NUM_LITERAL_NAME_3)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>4
-		SIDLITERALNUM(4, SID_EXTRA_NUM_LITERAL_NAME_4)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>5
-		SIDLITERALNUM(5, SID_EXTRA_NUM_LITERAL_NAME_5)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>6
-		SIDLITERALNUM(6, SID_EXTRA_NUM_LITERAL_NAME_6)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>7
-		SIDLITERALNUM(7, SID_EXTRA_NUM_LITERAL_NAME_7)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>8
-		SIDLITERALNUM(8, SID_EXTRA_NUM_LITERAL_NAME_8)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>9
-		SIDLITERALNUM(9, SID_EXTRA_NUM_LITERAL_NAME_9)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>10
-		SIDLITERALNUM(10, SID_EXTRA_NUM_LITERAL_NAME_10)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>11
-		SIDLITERALNUM(11, SID_EXTRA_NUM_LITERAL_NAME_11)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>12
-		SIDLITERALNUM(12, SID_EXTRA_NUM_LITERAL_NAME_12)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>13
-		SIDLITERALNUM(13, SID_EXTRA_NUM_LITERAL_NAME_13)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>14
-		SIDLITERALNUM(14, SID_EXTRA_NUM_LITERAL_NAME_14)
-#endif
-
-#if SID_EXTRA_NUM_COUNT>15
-		SIDLITERALNUM(15, SID_EXTRA_NUM_LITERAL_NAME_15)
-#endif
-
-#undef SIDLITERALNUM
-
-
-		
-
-		// define user defined literals for extra text
-
-#define SIDLITERALTEX(TXTINDEX, LITERALNAME) \
-	constexpr sid::SID operator"" LITERALNAME(const char* data, size_t size) noexcept\
-	{\
-		return sid::packExtraText<TXTINDEX>(data, size);\
-	}
-
-#if SID_EXTRA_TXT_COUNT>0
-		SIDLITERALTEX(0, SID_EXTRA_TXT_LITERAL_NAME_0)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>1
-		SIDLITERALTEX(1, SID_EXTRA_TXT_LITERAL_NAME_1)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>2
-		SIDLITERALTEX(2, SID_EXTRA_TXT_LITERAL_NAME_2)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>3
-		SIDLITERALTEX(3, SID_EXTRA_TXT_LITERAL_NAME_3)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>4
-		SIDLITERALTEX(4, SID_EXTRA_TXT_LITERAL_NAME_4)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>5
-		SIDLITERALTEX(5, SID_EXTRA_TXT_LITERAL_NAME_5)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>6
-		SIDLITERALTEX(6, SID_EXTRA_TXT_LITERAL_NAME_6)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>7
-		SIDLITERALTEX(7, SID_EXTRA_TXT_LITERAL_NAME_7)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>8
-		SIDLITERALTEX(8, SID_EXTRA_TXT_LITERAL_NAME_8)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>9
-		SIDLITERALTEX(9, SID_EXTRA_TXT_LITERAL_NAME_9)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>10
-		SIDLITERALTEX(10, SID_EXTRA_TXT_LITERAL_NAME_10)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>11
-		SIDLITERALTEX(11, SID_EXTRA_TXT_LITERAL_NAME_11)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>12
-		SIDLITERALTEX(12, SID_EXTRA_TXT_LITERAL_NAME_12)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>13
-		SIDLITERALTEX(13, SID_EXTRA_TXT_LITERAL_NAME_13)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>14
-		SIDLITERALTEX(14, SID_EXTRA_TXT_LITERAL_NAME_14)
-#endif
-
-#if SID_EXTRA_TXT_COUNT>15
-		SIDLITERALTEX(15, SID_EXTRA_TXT_LITERAL_NAME_15)
-#endif
-
-#undef SIDLITERALTEX
-
-
-
-			//define user defined literals for extra hash (as int or string)
-
-#define SIDLITERALHSH(HSHINDEX, LITERALNAME) \
-	constexpr sid::SID operator"" LITERALNAME(uint64_t number) noexcept\
-	{\
-		return sid::packExtraHash<HSHINDEX>(number);\
-	}\
-	constexpr sid::SID operator"" LITERALNAME(const char* data, size_t size) noexcept\
-	{\
-		return sid::packExtraHash<HSHINDEX>(data, size);\
-	}
-
-#if SID_EXTRA_HSH_COUNT>0
-			SIDLITERALHSH(0, SID_EXTRA_HSH_LITERAL_NAME_0)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>1
-			SIDLITERALHSH(1, SID_EXTRA_HSH_LITERAL_NAME_1)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>2
-			SIDLITERALHSH(2, SID_EXTRA_HSH_LITERAL_NAME_2)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>3
-			SIDLITERALHSH(3, SID_EXTRA_HSH_LITERAL_NAME_3)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>4
-			SIDLITERALHSH(4, SID_EXTRA_HSH_LITERAL_NAME_4)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>5
-			SIDLITERALHSH(5, SID_EXTRA_HSH_LITERAL_NAME_5)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>6
-			SIDLITERALHSH(6, SID_EXTRA_HSH_LITERAL_NAME_6)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>7
-			SIDLITERALHSH(7, SID_EXTRA_HSH_LITERAL_NAME_7)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>8
-			SIDLITERALHSH(8, SID_EXTRA_HSH_LITERAL_NAME_8)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>9
-			SIDLITERALHSH(9, SID_EXTRA_HSH_LITERAL_NAME_9)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>10
-			SIDLITERALHSH(10, SID_EXTRA_HSH_LITERAL_NAME_10)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>11
-			SIDLITERALHSH(11, SID_EXTRA_HSH_LITERAL_NAME_11)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>12
-			SIDLITERALHSH(12, SID_EXTRA_HSH_LITERAL_NAME_12)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>13
-			SIDLITERALHSH(13, SID_EXTRA_HSH_LITERAL_NAME_13)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>14
-			SIDLITERALHSH(14, SID_EXTRA_HSH_LITERAL_NAME_14)
-#endif
-
-#if SID_EXTRA_HSH_COUNT>15
-			SIDLITERALHSH(15, SID_EXTRA_HSH_LITERAL_NAME_15)
-#endif
-
-#undef SIDLITERALHSH
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#undef SID_FIRST_EXTRA_NUM
-#undef SID_FIRST_EXTRA_TXT
-#undef SID_FIRST_EXTRA_HSH
-#undef SID_FIRST_EXTRA_END
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2435,27 +842,27 @@ constexpr auto hashtest3e = "abcdefghijklmnoprstuwxyzabcdefghijklmnoprstuwxyzabc
 constexpr auto hashtest3d = sid::unpack(hashtest3e);
 
 
-constexpr auto binteste = "1.10.0111111..1111111111000000000001111111111111111000111001"_SIDBIN;
+constexpr auto binteste = 0b101000111111001111111111000000000001111111111111111000111001_SIDNUM;
 constexpr auto bintestd = unpack(binteste);
 
 
 constexpr uint64_t binnum = 0b101000111111001111111111000000000001111111111111111000111001;
-constexpr auto bintest2e = 0b101000111111001111111111000000000001111111111111111000111001_SIDBIN;
+constexpr auto bintest2e = 0b101000111111001111111111000000000001111111111111111000111001_SIDNUM;
 constexpr auto bintest2d = unpack(bintest2e);
 constexpr auto bintest2dn = unpackNumber(bintest2e);
 
-constexpr auto decteste = "12345678901111119"_SIDDEC;
+constexpr auto decteste = 12345678901111119_SIDNUM;
 constexpr auto dectestd = unpack(decteste);
 
-constexpr auto dectest2e = 12345678911111119_SIDDEC;
+constexpr auto dectest2e = 12345678911111119_SIDNUM;
 constexpr auto dectest2d = unpack(dectest2e);
 constexpr auto dectest2dn = unpackNumber(dectest2e);
 
 
-constexpr auto hexteste = "0123789ABCdefa"_SIDHEX;
+constexpr auto hexteste = 0x0123789ABCdefa_SIDNUM;
 constexpr auto hextestd = unpack(hexteste);
 
-constexpr auto hextest2e = 0x0123789ABCdefa_SIDHEX;
+constexpr auto hextest2e = 0x0123789ABCdefa_SIDNUM;
 constexpr auto hextest2d = unpack(hextest2e);
 
 constexpr auto hextest2dn = unpackNumber(hextest2e);
@@ -2480,56 +887,40 @@ constexpr auto bytetestdt = unpackText(byteteste);
 
 
 const uint64_t tab[] = {
-	"0000"_SIDBIN.val % 256,
-	"0001"_SIDBIN.val % 256,
-	"0010"_SIDBIN.val % 256,
-	"0011"_SIDBIN.val % 256,
-	"0100"_SIDBIN.val % 256,
-	"0101"_SIDBIN.val % 256,
-	"0110"_SIDBIN.val % 256,
-	"0111"_SIDBIN.val % 256,
-	"1000"_SIDBIN.val % 256,
-	"1001"_SIDBIN.val % 256,
-	"1010"_SIDBIN.val % 256,
-	"1011"_SIDBIN.val % 256,
-	"1100"_SIDBIN.val % 256,
-	"1101"_SIDBIN.val % 256,
-	"1110"_SIDBIN.val % 256,
-	"1111"_SIDBIN.val % 256
+	(0b0000_SIDNUM).val % 256,
+	(0b0001_SIDNUM).val % 256,
+	(0b0010_SIDNUM).val % 256,
+	(0b0011_SIDNUM).val % 256,
+	(0b0100_SIDNUM).val % 256,
+	(0b0101_SIDNUM).val % 256,
+	(0b0110_SIDNUM).val % 256,
+	(0b0111_SIDNUM).val % 256,
+	(0b1000_SIDNUM).val % 256,
+	(0b1001_SIDNUM).val % 256,
+	(0b1010_SIDNUM).val % 256,
+	(0b1011_SIDNUM).val % 256,
+	(0b1100_SIDNUM).val % 256,
+	(0b1101_SIDNUM).val % 256,
+	(0b1110_SIDNUM).val % 256,
+	(0b1111_SIDNUM).val % 256
 };
 
 
 
-	constexpr auto bintest8e = "000001111000011011110"_SIDBIN;
+	constexpr auto bintest8e = 0b000001111000011011110_SIDNUM;
 	constexpr auto bintest8d = unpack(bintest8e);
 
-	constexpr auto bintest9e = 61662_SIDBIN;
+	constexpr auto bintest9e = 61662_SIDNUM;
 	constexpr auto bintest9d = unpack(bintest9e);
 
 
 	constexpr bool fdshfkjasdhfkjdsh = (bintest9e == bintest8e);
 
 
-	constexpr auto  gf1 = sid::unpackNumber(0b010001100010010010001010101000101_SIDBIN);
-	constexpr auto  gf2 = sid::unpackNumber("010001100010010010001010101000101"_SIDBIN);
+	constexpr auto  gf1 = sid::unpackNumber(0b010001100010010010001010101000101_SIDNUM);
+	//constexpr auto  gf2 = sid::unpackNumber("010001100010010010001010101000101"_SIDBIN);
 
 
-	constexpr auto testxn0Ae = 61662_SIDXN0;
-	constexpr auto testxn0Ad = unpack(testxn0Ae);
-
-	constexpr auto testxn0Be = "00011110100011111111100111001001011001010100100001010100"_SIDXN0;
-	constexpr auto testxn0Bd = unpack(testxn0Be);
-
-
-
-	constexpr auto testxt0Ae = "H1lloWorl"_SIDXT2;
-	constexpr auto testxt0Ad = unpack(testxt0Ae);
-
-	constexpr auto testxh0Ae = "HelloWorl"_SIDXH2;
-	constexpr auto testxh0Ad = unpack(testxh0Ae);
-
-	constexpr auto testxh0Be = 0x61662_SIDXH3;
-	constexpr auto testxh0Bd = unpack(testxh0Be);
 
 
 

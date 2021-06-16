@@ -15,12 +15,12 @@ int main()
 	
 	
 	//compile time:
-constexpr sid::SID exampleConstexpr = SIDDICT4C<0>("enemy", "tank", "01", "");
-constexpr std::array<const char*, 4> exampleConstexprUnpacked=  unpackWords4C<0>(exampleConstexpr);
+constexpr sid::SID exampleConstexpr = SIDDICT4C("enemy", "tank", "01", "");
+constexpr std::array<const char*, 4> exampleConstexprUnpacked=  unpackWords4C(exampleConstexpr);
 
 //runtime:
-const sid::SID exampleDynamic = SIDDICT4D<0>("enemy", "tank", "01", "");
-const std::array<const char*, 4> exampleDynamicUnpacked=  unpackWords4D<0>(exampleDynamic);
+const sid::SID exampleDynamic = SIDDICT4D("enemy", "tank", "01", "");
+const std::array<const char*, 4> exampleDynamicUnpacked=  unpackWords4D(exampleDynamic);
 	
 	
 	
@@ -47,11 +47,11 @@ const std::array<const char*, 4> exampleDynamicUnpacked=  unpackWords4D<0>(examp
 		 std::getline (std::cin,text);
 		switch(DDict(text.c_str()))
 		{
-			case "mouse"_CDict:					std::cout << "you write mouse?\n"; break;
-			case "benchmark"_CDict:				std::cout << "you perform benchmark?\n"; break;
-			case "mechanical_keyboard"_CDict:	std::cout << "you write mechanical keyboard?\n"; break;
-			case "bad word"_CDict:				std::cout << "I don't understand, even don't have word in my database!\n"; break;
-			default:							std::cout << "I don't understand!\n"; break;
+			case "example constexpr word 1"_CDict:		std::cout << "you write mouse?\n"; break;
+			case "example_constexpr_word_2"_CDict:		std::cout << "you perform benchmark?\n"; break;
+			case "EXAMPLE_CONSTEXPR_WORD_3"_CDict:		std::cout << "you write mechanical keyboard?\n"; break;
+			case "bad word"_CDict:						std::cout << "I don't understand, even don't have word in my database!\n"; break;
+			default:									std::cout << "I don't understand!\n"; break;
 		}
 		std::cout << "Index in DB:\t" << DDict(text.c_str()) << "\n";
 	}
