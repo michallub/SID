@@ -1,0 +1,4 @@
+*.exe
+gen*
+WordListConstexpr.h
+WordListDynamic.h
