@@ -30,6 +30,95 @@ std::ostream& operator<<(std::ostream& os, const HashType<UINTTYPE, ELEMENTCOUNT
 	return os;
 }
 
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+std::istream& operator>>(std::istream& is, HashType<UINTTYPE, ELEMENTCOUNT> &hash)
+{
+	const char * hex = "0123456789ABCDEF";
+	for(auto& e: hash.value)
+	{
+		for(int i = sizeof(e)-1; i >= 0; i--)
+		{
+			char h,l;
+			UINTTYPE valh, vall;
+			is >> h;
+			if(h >= '0' && h <= '9')
+				valh = h-'0';
+			else if(h >= 'A' && h <='F')
+				valh = h-'A'+10;
+			else if(h >= 'a' && h <='f')
+				valh = h-'a'+10;
+			else
+				throw std::
+			
+			
+			
+			e |= UINTTYPE(h-'0') << (i*8+4);
+			
+			hex[(e >> (i*8+4))&0xF];
+			is >> l;hex[(e >> (i*8))&0xF];
+		}
+	}
+	return is;
+}
+
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator==(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	for(size_t i = 0; i < ELEMENTCOUNT; ++i)
+	{
+		if(a.value[i] != b.value[i]) return false;
+	}
+	return true;
+}
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator!=(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	return !(a==b);
+}
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator<(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	for(size_t i = 0; i < ELEMENTCOUNT; ++i)
+	{
+		if(a.value[i] < b.value[i]) return true;
+		if(b.value[i] < a.value[i]) return false;
+	}
+	return false;
+}
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator<=(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	for(size_t i = 0; i < ELEMENTCOUNT; ++i)
+	{
+		if(a.value[i] < b.value[i]) return true;
+		if(b.value[i] < a.value[i]) return false;
+	}
+	return true;
+}
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator>(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	return b < a;
+}
+template<typename UINTTYPE, size_t ELEMENTCOUNT>
+bool operator>=(const HashType<UINTTYPE, ELEMENTCOUNT> &a, const HashType<UINTTYPE, ELEMENTCOUNT> &a){
+	return b <= a;
+}
+
+namespace std
+{
+	struct hash{
+		template<typename UINTTYPE, size_t ELEMENTCOUNT>
+		size_t operator()(const HashType<UINTTYPE, ELEMENTCOUNT> &h)
+		{
+			size_t hval = 0;
+			for(size_t i = 0; i < ELEMENTCOUNT; ++i)
+			{
+				hval ^= (h.value[i]^i) * 127;
+			}
+			return hval;
+		}
+	};
+}
+
+
+
+
 using HashType32 = HashType<uint32_t, 1>;
 using HashType64 = HashType<uint64_t, 1>;
 using HashType96 = HashType<uint32_t, 3>;
