@@ -45,9 +45,6 @@
     <ClInclude Include="include\dict\dictutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="comparators.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SIDlib.cpp">

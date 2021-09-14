@@ -2,3 +2,9 @@
 gen*
 WordListConstexpr.h
 WordListDynamic.h
+*.ipch
+*.testlog
+*.tlog
+*.pch
+*.obj
+*.log
