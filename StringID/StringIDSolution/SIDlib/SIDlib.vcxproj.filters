@@ -24,12 +24,39 @@
     <ClInclude Include="SID.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\siddict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sid\crc64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sid\DES.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sid\SID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sid\SipHash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dict\dictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dict\dictutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comparators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SIDlib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\baker\genDictDynamic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
